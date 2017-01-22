@@ -1,0 +1,20 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block menu_home %}active{% endblock %}
+
+{% block contents %}
+    <section>
+    	<div class="container">
+	        <h3>Liste des séries</h3>
+	        <div class="row">
+			{% for show in shows %}
+	        <a href="{{ path('show', {id: show.id}) }}" class="tvshow col-sm-6">
+	            <img class="pull-left" src="{{ web_image('uploads/'~show.image).resize(100, 100).png }}" />
+	            <h4>{{ show.name }} ({{ show.seasons|length }} saisons)</h4>
+	            {{ show.synopsis }}
+	        </a>
+			{% endfor %}
+	        </div>
+	    </div>
+    </section>
+{% endblock %}
